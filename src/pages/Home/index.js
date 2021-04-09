@@ -7,6 +7,7 @@ export default function Home() {
         <div>
             <p>Coins List</p>
             <AllCoins/>
+            
 
         </div>
     )

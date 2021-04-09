@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import Pagination from "../../components/Pagination"
 //import moment from "moment";
-
+import { selectUser } from "../../store/user/selectors"
 import { fetchNextPages } from '../../store/coin/actions'
-
 import { selectCoinLoading, selectFeedCoins } from '../../store/coin/selectors'
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -12,46 +12,76 @@ export default function CoinsFeed() {
      const dispatch = useDispatch();
      const loading = useSelector(selectCoinLoading)
      const coins = useSelector(selectFeedCoins)
+     const [currentPage, setCurrentPage] = useState(1)
+     const [postPerPage] = useState(30)
+
+     const user = useSelector(selectUser);
 
   useEffect(() => {
     
     dispatch(fetchNextPages);
   }, [dispatch]);   
 
+const indexOfLastPost = currentPage * postPerPage
+const indexOfTheFirstPost = indexOfLastPost - postPerPage
+const currentPosts = coins.slice(indexOfTheFirstPost, indexOfLastPost)
+const paginate = (pageNumber) => setCurrentPage(pageNumber)
   return(
+    <div className='container mt-5'>
+   
       <div>
-          Hello all coins will be here
-          <h2>COINS</h2>
+          
+          <h2 className='text-primary mb-4'>COINS LIST</h2>
 
-            <table key="id" >
-               <tr>
-                  
-                  <th>Name</th>
-                  <th>Currency</th>
-                  <th>Price</th>
-                  <th>Market Cap</th>
-
+            <table key="id" className="table table-hover">
+              <thead>
+               <tr >
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Currency</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Market Cap</th>
+                  {user.token ? 
+                  (<th scope="col">Amount</th>) :
+                  (<th scope="col"></th>)}
+                  <th scope="col"></th>
+                  {user.token ? 
+                  (<th scope="col"></th>) :
+                  (null)}
               </tr>
-              
-            </table>
-      {coins.map(coin => {
+              </thead>
+            
+           
+      {currentPosts.map(coin => {
         return (
-          <thead>
-       <th> <Link to= {`/coin`}>{coin.name} {coin.currency}</Link></th>
-       <th> {coin.currency}</th>
-       <th> {coin.price}</th>
-       <th> {coin.market_cap}</th>
-    
-       </thead>
+          
+          <tbody>
+            <tr>
+                <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="35" height="35"/></th>
+                <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
+                <td >{coin.currency}</td>
+                <td>{coin.price}</td>
+                <td>{coin.market_cap}</td>
+                <td>  {user.token ? 
+                (
+                  <input type="number" step="0.01"></input>
+                ) 
+                :
+                (null)}</td>
+                <td><Link to= {`${coin.id}`}><button>See Details</button></Link></td>
+                <td>  {user.token ? 
+                (<Link to={"./portfolio"}><button>Add to MyPortfolio</button></Link>
+                ) 
+                :
+                (null)}</td>
+            </tr>
+      </tbody>
+       
         );
       })}
-       <p>
-        {loading ? (
-          <em>Loading...</em>
-        ) : (
-           <button onClick={() => dispatch(fetchNextPages)}>Load more</button>
-        )}
-      </p>
+      </table>
+     <Pagination postsPerPage={postPerPage} totalPosts={coins.length} paginate={paginate}/>
+      </div>
       </div>
   )
 } 
