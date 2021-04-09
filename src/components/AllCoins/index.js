@@ -41,6 +41,9 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                   <th scope="col">Currency</th>
                   <th scope="col">Price</th>
                   <th scope="col">Market Cap</th>
+                  {user.token ? 
+                  (<th scope="col">Amount</th>) :
+                  (<th scope="col"></th>)}
                   <th scope="col"></th>
                   {user.token ? 
                   (<th scope="col"></th>) :
@@ -54,12 +57,18 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
           
           <tbody>
             <tr>
-                <th scope="row" > * </th>
-                <td ><Link to= {`/details`}>{coin.currency}</Link></td>
+                <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="35" height="35"/></th>
+                <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
                 <td >{coin.currency}</td>
                 <td>{coin.price}</td>
                 <td>{coin.market_cap}</td>
-                <td><Link to= {`/details`}><button>See Details</button></Link></td>
+                <td>  {user.token ? 
+                (
+                  <input type="number" step="0.01"></input>
+                ) 
+                :
+                (null)}</td>
+                <td><Link to= {`${coin.id}`}><button>See Details</button></Link></td>
                 <td>  {user.token ? 
                 (<Link to={"./portfolio"}><button>Add to MyPortfolio</button></Link>
                 ) 
