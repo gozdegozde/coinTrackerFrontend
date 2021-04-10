@@ -4,13 +4,13 @@ import Pagination from "../../components/Pagination"
 //import moment from "moment";
 import { selectUser } from "../../store/user/selectors"
 import { fetchNextPages } from '../../store/coin/actions'
-import { selectCoinLoading, selectFeedCoins } from '../../store/coin/selectors'
+import {  selectFeedCoins } from '../../store/coin/selectors'
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CoinsFeed() {
      const dispatch = useDispatch();
-     const loading = useSelector(selectCoinLoading)
+     //const loading = useSelector(selectCoinLoading)
      const coins = useSelector(selectFeedCoins)
      const [currentPage, setCurrentPage] = useState(1)
      const [postPerPage] = useState(30)
@@ -41,6 +41,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                   <th scope="col">Currency</th>
                   <th scope="col">Price</th>
                   <th scope="col">Market Cap</th>
+                  <th scope="col">24h %</th>
                   {user.token ? 
                   (<th scope="col">Amount</th>) :
                   (<th scope="col"></th>)}
@@ -62,6 +63,11 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 <td >{coin.currency}</td>
                 <td>{coin.price}</td>
                 <td>{coin.market_cap}</td>
+                <td>{coin["1d"].price_change_pct < 0 ? (
+                  <p className="text-danger">{coin["1d"].price_change_pct} </p>
+                ):(
+                  <p className="text-success">{coin["1d"].price_change_pct}</p>
+                )}</td>
                 <td>  {user.token ? 
                 (
                   <input type="number" step="0.01"></input>
