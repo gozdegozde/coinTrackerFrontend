@@ -6,6 +6,7 @@ import { selectUser } from "../../store/user/selectors"
 import { fetchNextPages } from '../../store/coin/actions'
 import {  selectFeedCoins } from '../../store/coin/selectors'
 
+
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function CoinsFeed() {
@@ -42,13 +43,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                   <th scope="col">Price</th>
                   <th scope="col">Market Cap</th>
                   <th scope="col">24h %</th>
-                  {user.token ? 
-                  (<th scope="col">Amount</th>) :
-                  (<th scope="col"></th>)}
                   <th scope="col"></th>
-                  {user.token ? 
-                  (<th scope="col"></th>) :
-                  (null)}
+                
               </tr>
               </thead>
             
@@ -68,18 +64,9 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 ):(
                   <p className="text-success">{coin["1d"].price_change_pct}</p>
                 )}</td>
-                <td>  {user.token ? 
-                (
-                  <input type="number" step="0.01"></input>
-                ) 
-                :
-                (null)}</td>
+                
                 <td><Link to= {`${coin.id}`}><button>See Details</button></Link></td>
-                <td>  {user.token ? 
-                (<Link to={"./portfolio"}><button>Add to MyPortfolio</button></Link>
-                ) 
-                :
-                (null)}</td>
+               
             </tr>
       </tbody>
        

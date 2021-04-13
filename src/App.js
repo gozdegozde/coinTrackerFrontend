@@ -9,22 +9,13 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home"
 import CoinDetails from "./pages/CoinDetails"
+import MyPortfolio from "./pages/MyPortfolio"
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
-import { Jumbotron } from "react-bootstrap";
 
-// const Home = () => (
-//   <Jumbotron>
-//     <h1>Home</h1>
-//   </Jumbotron>
-// );
-const Other = () => (
-  <Jumbotron>
-    <h1>Other</h1>
-  </Jumbotron>
-);
+
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +31,9 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
-       
+        
         <Route exact path="/" component={Home} />
-        <Route path="/other" component={Other} />
+        <Route path="/portfolio" component={MyPortfolio} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/:ids" component={CoinDetails}/>

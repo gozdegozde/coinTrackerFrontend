@@ -2,21 +2,14 @@ import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import moment from "moment"
+import ScriptTag from 'react-script-tag';
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 import { fetchCoin } from "../../store/coinDetail/actions";
 import { selectCoins } from "../../store/coinDetail/selectors";
 import { selectUser } from "../../store/user/selectors"
-//import ReactDOM from 'react-dom';
-
-
-// function myFunction() {
-
-// const element = <div> <div class="nomics-ticker-widget" data-name="APIS" data-base="APIS" data-quote="USD"></div><script src="https://widget.nomics.com/embed.js"></script></div>;
-// ReactDOM.render(element, document.getElementById('root'));
-
-// }
+import { postCoin } from "../../store/userCoin/actions";
 
 
 export default function CoinDetails() {
@@ -38,6 +31,7 @@ export default function CoinDetails() {
 
     const coinData = useSelector(selectCoins)
   ;
+  
     return !Array.isArray(coinData) ? (
     <p>loading ...</p>
   ) : (
@@ -52,6 +46,8 @@ export default function CoinDetails() {
  
             <h1>{coin.symbol} Price Statistics</h1>
             
+            <div class="nomics-ticker-widget" data-name={coin.name} data-base={coin.id} data-quote="USD"></div>
+          <ScriptTag type="text/javascript" src="https://widget.nomics.com/embed.js" /> <br/>
             {displayButton1 ? (
                 <button onClick = {()=> setDetail1(true)}>
                     Today's Details
@@ -64,7 +60,7 @@ export default function CoinDetails() {
                <table key="id" className="table table-hover">
               <thead>
                <tr >
-                  <th colspan="2" scope="col"><h1 className='text-primary mb-4'>{moment(coin.price_timestamp).format("DD-MM-YYYY")}</h1></th>
+                  <th colSpan="2" scope="col"><h1 className='text-primary mb-4'>{moment(coin.price_timestamp).format("DD-MM-YYYY")}</h1></th>
               </tr>
              <tr>
                 <td><img src={coin.logo_url} alt="some" width="55" height="55"/></td>
@@ -114,7 +110,7 @@ export default function CoinDetails() {
                   <table key="id" className="table table-hover">
               <thead>
                <tr >
-                  <th colspan="2" scope="col"><h1 className='text-primary mb-4'>{moment().subtract(1, 'days').format("DD-MM-YYYY")   }</h1></th>
+                  <th colSpan="2" scope="col"><h1 className='text-primary mb-4'>{moment().subtract(1, 'days').format("DD-MM-YYYY")   }</h1></th>
               </tr>
              <tr>
                 <td><img src={coin.logo_url} alt="some" width="55" height="55"/></td>
@@ -163,7 +159,7 @@ export default function CoinDetails() {
                     <table key="id" className="table table-hover">
               <thead>
                <tr >
-                  <th colspan="2" scope="col"></th>
+                  <th colSpan="2" scope="col"></th>
               </tr>
              <tr>
                 <td>Circulating Supply</td>
@@ -178,18 +174,19 @@ export default function CoinDetails() {
             ) : null}
             <div><br/>
                 {user.token ? 
-                (
+                (<p>Amount :
                 <input type="number" step="0.01"></input>
+                </p>
                 ) 
                 :
                 (null)}
                 <br/><br/>
             {user.token ? 
                 (
-                <Link to={"./portfolio"}><button>Add to MyPortfolio</button></Link>
+                <Link to={"./portfolio"}><button onClick={(e) => {dispatch(postCoin( coin.id))}}>Add to MyPortfolio</button></Link>
                 ) 
                 :
-                (null)}
+                (<Link to={"./login"}><button>Login</button></Link>)}
             </div>
         </div>
        </div>
