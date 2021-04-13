@@ -25,6 +25,12 @@ export default function CoinDetails() {
     const displayButton3 = detail3 === false;
 
     const user = useSelector(selectUser);
+
+    const [amount, setAmount] = useState()
+    const amountNumber = parseFloat(amount)
+    console.log("amountNumber",  typeof amountNumber)
+
+    console.log("amount", amount)
     useEffect (() => {
         dispatch(fetchCoin(ids))
     }, [dispatch, ids])
@@ -36,7 +42,7 @@ export default function CoinDetails() {
     <p>loading ...</p>
   ) : (
     coinData.map((coin) => {
-      console.log("coin length", coin)
+      console.log("coin ", coin)
       
       return (
         
@@ -175,7 +181,12 @@ export default function CoinDetails() {
             <div><br/>
                 {user.token ? 
                 (<p>Amount :
-                <input type="number" step="0.01"></input>
+                <input 
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)} 
+                type="number" 
+                step="0.01">
+                </input>
                 </p>
                 ) 
                 :
@@ -183,7 +194,7 @@ export default function CoinDetails() {
                 <br/><br/>
             {user.token ? 
                 (
-                <Link to={"./portfolio"}><button onClick={(e) => {dispatch(postCoin( coin.id))}}>Add to MyPortfolio</button></Link>
+                <Link to={"./portfolio"}><button onClick={(e) => {dispatch(postCoin(  coin.id, amountNumber ))}}>Add to MyPortfolio</button></Link>
                 ) 
                 :
                 (<Link to={"./login"}><button>Login</button></Link>)}
