@@ -8,6 +8,7 @@ import {  selectFeedCoins } from '../../store/coin/selectors'
 
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Button from 'react-bootstrap/Button';
 
 export default function CoinsFeed() {
      const dispatch = useDispatch();
@@ -60,12 +61,27 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 <td>{coin.price}</td>
                 <td>{coin.market_cap}</td>
                 <td>{coin["1d"].price_change_pct < 0 ? (
-                  <p className="text-danger">{coin["1d"].price_change_pct} </p>
+                  
+                      <p className="text-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg>
+                        {coin["1d"].price_change_pct} 
+                      
+                      </p>
+                  
+                  
                 ):(
-                  <p className="text-success">{coin["1d"].price_change_pct}</p>
+                   <p className="text-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                  </svg>
+                      {coin["1d"].price_change_pct}
+                  </p>
+                 
                 )}</td>
                 
-                <td><Link to= {`${coin.id}`}><button>See Details</button></Link></td>
+                <td><Link to= {`${coin.id}`}><Button>See Details</Button></Link></td>
                
             </tr>
       </tbody>
@@ -76,5 +92,6 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
      <Pagination postsPerPage={postPerPage} totalPosts={coins.length} paginate={paginate}/>
       </div>
       </div>
+      
   )
 } 

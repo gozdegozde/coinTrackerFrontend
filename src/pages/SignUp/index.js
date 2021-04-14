@@ -33,9 +33,17 @@ export default function SignUp() {
   }
 
   return (
+      <div>
     <Container>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Signup</h1>
+         <div style={{ 
+      backgroundImage: `url("https://cointracking.info/assets/img/landing/Devices.png")`,
+       height:'830px',
+       width:'950px'
+      
+    }}>
+      <Form as={Col} md={{ span: 6, offset: 10 }}>
+        <br/><br/>
+        <h1 className="mb-5">Signup</h1>
         <Form.Group controlId="formBasicName">
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -77,6 +85,8 @@ export default function SignUp() {
         </Form.Group>
         <Link to="/login">Click here to log in</Link>
       </Form>
+      </div>
     </Container>
+    </div>
   );
 }
