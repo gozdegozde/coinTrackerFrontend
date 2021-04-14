@@ -4,7 +4,7 @@ import { selectUser } from "../../store/addCoin/selectors";
 import {fetchUserCoins} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../../components/Pagination"
+
 
 
 

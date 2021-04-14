@@ -15,7 +15,7 @@ export default function Navigation() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
+      <Navbar.Brand path="/" as={NavLink} to="/">
         TRACK YOUR COINS
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -197,7 +197,7 @@ export default function CoinDetails() {
                 <Link to={"./portfolio"}><button onClick={(e) => {dispatch(postCoin(  coin.id, amountNumber ))}}>Add to MyPortfolio</button></Link>
                 ) 
                 :
-                (<Link to={"./login"}><button>Login</button></Link>)}
+                (null)}
             </div>
         </div>
        </div>
