@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { selectUser } from "../../store/addCoin/selectors";
-import {fetchUserCoins} from "../../store/userCoin/actions"
+import {fetchUserCoins, deleteCoin} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"
 import { useDispatch, useSelector } from "react-redux";
-import Pagination from "../../components/Pagination"
+
 
 
 
@@ -18,6 +18,10 @@ export default function CoinDetails() {
     dispatch(fetchUserCoins(users.id));
   }, [dispatch, users.id]);
 
+  const onDelete = (coinId) => {
+   
+    dispatch(deleteCoin(coinId));
+  };
 
 return(
         <div className='container mt-5'> 
@@ -47,7 +51,8 @@ return(
                         <td>{coin.price}</td>
                         <td>{coin.userCoins.amount}</td>
                 
-                        <td> <button>Delete Coin</button> </td>
+                        <td> <button  onClick= {() => onDelete(coin.id)}>Delete Coin</button> </td>
+                       
                         </tr>
                    </tbody>
                 )        

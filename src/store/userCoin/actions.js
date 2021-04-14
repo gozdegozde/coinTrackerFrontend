@@ -71,3 +71,30 @@ export function fetchUserCoins(userId) {
     dispatch(userCoinsList(allCoins));
   };
 }
+export const coinDeleted = (coinId) => ({
+  type: "coin/coinDelete",
+  payload: coinId,
+});
+
+export const deleteCoin = (coinId,userId) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const userToken = state.user.token
+
+    try {
+      const res = await axios.delete(
+        `${apiUrl}/users/${userId}/coins/${coinId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${userToken}`,
+          },
+        }
+      );
+
+      console.log("coin deleted", res);
+      dispatch(coinDeleted(coinId));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+};
