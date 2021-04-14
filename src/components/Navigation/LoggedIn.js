@@ -12,7 +12,7 @@ export default function LoggedIn() {
   const user = useSelector(selectUser);
   return (
     <>
-      <Nav.Item style={{ padding: ".5rem 1rem" }}>Welcome {user.name}</Nav.Item>
+      <Nav.Item style={{ padding: ".5rem 1rem" }}>Welcome <b>{user.name}</b></Nav.Item>
       <Link to={"./"}><Button onClick={() => dispatch(logOut())}>Logout</Button></Link>
     </>
   );

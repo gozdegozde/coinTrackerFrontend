@@ -4,6 +4,8 @@ import { selectUser } from "../../store/addCoin/selectors";
 import {fetchUserCoins} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"
 import { useDispatch, useSelector } from "react-redux";
+import Button from 'react-bootstrap/Button';
+import moment from "moment"
 
 
 
@@ -31,6 +33,7 @@ return(
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Amount</th>
+                  <th scope="col">$ Amount</th>
                   <th scope="col"></th>
                 
               </tr>
@@ -44,10 +47,11 @@ return(
                            <th scope="row" > <img src={coin.logoUrl} alt={coin.id} width="45" height="45"/> </th>
                         
                         <td >{coin.name}</td>
-                        <td>{coin.price}</td>
+                        <td>{parseFloat(coin.price).toFixed(2)}</td>
                         <td>{coin.userCoins.amount}</td>
-                
-                        <td> <button>Delete Coin</button> </td>
+                        <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2)}</td>
+                        
+                        <td> <Button>Delete Coin</Button> </td>
                         </tr>
                    </tbody>
                 )        
