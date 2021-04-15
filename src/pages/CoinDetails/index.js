@@ -16,13 +16,7 @@ export default function CoinDetails() {
 
    const dispatch = useDispatch();
     const { ids } = useParams();
-    const [detail1, setDetail1] = useState(false)
-    const [detail2, setDetail2] = useState(false)
-    const [detail3, setDetail3] = useState(false)
-
-    const displayButton1 = detail1 === false;
-    const displayButton2 = detail2 === false;
-    const displayButton3 = detail3 === false;
+    
 
     const user = useSelector(selectUser);
 
@@ -53,14 +47,6 @@ export default function CoinDetails() {
             
             <div class="nomics-ticker-widget" data-name={coin.name} data-base={coin.id} data-quote="USD"></div>
           <ScriptTag type="text/javascript" src="https://widget.nomics.com/embed.js" /> <br/>
-            {displayButton1 ? (
-                <Button onClick = {()=> setDetail1(true)}>
-                    Today's Details
-                </Button>
-            ) :  <Button onClick = {()=> setDetail1(false)}>
-                    Today's Details
-                </Button>}
-            {detail1 ? (
 
                <table key="id" className="table table-hover">
               <thead>
@@ -87,52 +73,6 @@ export default function CoinDetails() {
                 <td>Price</td>
                 <td>${coin.price}</td>
               </tr>
-               <tr>
-                <td>Market Cap</td>
-                <td>${coin.market_cap}</td>
-              </tr>
-               <tr>
-                <td>Market Rank</td>
-                <td>#{coin.rank}</td>
-              </tr>
-              </thead>
-              </table>
-            
-                
-            ) : null}
-            
-        </div>
-         <div>
-            <br/>
-            {displayButton2 ? (
-                <Button onClick = {()=> setDetail2(true)}>
-                    Yesterday's Details
-                </Button>
-            ) : <Button onClick = {()=> setDetail2(false)}>
-                    Yesterday's Details
-                </Button>}
-            {detail2 ? (
-                  <table key="id" className="table table-hover">
-              <thead>
-               <tr >
-                  <th colSpan="2" scope="col"><h1 className='text-primary mb-4'>{moment().subtract(1, 'days').format("DD-MM-YYYY")   }</h1></th>
-              </tr>
-             <tr>
-                <td><img src={coin.logo_url} alt="some" width="55" height="55"/></td>
-                <td>{coin.name}</td>
-              </tr>
-               <tr>
-                <td>Status</td>
-                <td>{coin.status === "active" ? (
-                    <p className="text-success">{coin.status}</p>
-                ):(
-                    <p className="text-danger">{coin.status}</p>
-                )}</td>
-              </tr>
-               <tr>
-                <td>Currency</td>
-                <td>{coin.currency}</td>
-              </tr>
               <tr>
                 <td>Price Change</td>
                 <td>{coin["1d"].price_change < 0 ? (
@@ -150,6 +90,10 @@ export default function CoinDetails() {
                 )}</td>
               </tr>
                <tr>
+                <td>Market Cap</td>
+                <td>${coin.market_cap}</td>
+              </tr>
+               <tr>
                 <td>Market Cap Change</td>
                 <td>
                   {coin['1d'].market_cap_change_pct < 0 ? (
@@ -164,28 +108,7 @@ export default function CoinDetails() {
                           </svg>
                     {coin['1d'].market_cap_change_pct}%</p>)}</td>
               </tr>
-              </thead>
-              </table>
-            
-            ) : null}
-            
-        </div>
-         <div>
-            <br/>
-            {displayButton3 ? (
-                <Button onClick = {()=> setDetail3(true)}>
-                   {coin.currency} Supply
-                </Button>
-            ) : <Button onClick = {()=> setDetail3(false)}>
-                    {coin.currency} Supply
-                </Button>}
-            {detail3 ? (
-                    <table key="id" className="table table-hover">
-              <thead>
-               <tr >
-                  <th colSpan="2" scope="col"></th>
-              </tr>
-             <tr>
+              <tr>
                 <td>Circulating Supply</td>
                 <td>{coin.circulating_supply} {coin.symbol}</td>
               </tr>
@@ -193,23 +116,29 @@ export default function CoinDetails() {
                 <td>Max Supply</td>
                 <td>{coin.max_supply} {coin.symbol}</td>
               </tr>
-              </thead>
-              </table>
-            ) : null}
-            <div><br/>
-                {user.token ? 
-                (<p>Amount :
-                <input 
+               <tr>
+                <td>Market Rank</td>
+                <td>#{coin.rank}</td>
+              </tr>
+             {user.token ? 
+                (<tr><td>Amount </td>
+                <td><input 
                 value={amount}
                 onChange={(event) => setAmount(event.target.value)} 
                 type="number" 
                 step="0.01">
                 </input>
-                </p>
-                ) 
+                </td>
+                </tr>) 
                 :
                 (null)}
-                <br/><br/>
+              </thead>
+              </table>
+            
+        </div>
+         
+            <div>
+               
             {user.token ? 
                 (
                 <Link to={"./portfolio"}><Button onClick={(e) => {dispatch(postCoin(  coin.id, amountNumber ))}}>Add to MyPortfolio</Button></Link>
@@ -218,8 +147,7 @@ export default function CoinDetails() {
                 (null)}
             </div>
         </div>
-       </div>
-       
+      
       );
         
     })

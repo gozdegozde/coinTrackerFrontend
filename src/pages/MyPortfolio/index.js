@@ -53,17 +53,19 @@ return(
                         <td >{coin.name}</td>
                         <td>{parseFloat(coin.price).toFixed(2)}</td>
                         <td>{coin.userCoins.amount}</td>
-                
-                        <td> <button  onClick= {() => onDelete(coin.id)}>Delete Coin</button> </td>
-                       
-                        {/* <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2)}</td>
-                        
-                        <td> <Button>Delete Coin</Button> </td> */}
+                        <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2)}</td>
+                        <td> <Button  onClick= {() => onDelete(coin.id)}>Delete Coin</Button> </td>
                         </tr>
                    </tbody>
-                )        
+                  
+                )    
             })
         )}
+        <td>Total Amount </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>${Array.isArray(coins) ? (coins.map(c=>(parseInt(c.price * c.userCoins.amount))).reduce((sum,val)=> sum+ val,0)) : (null)}</td>
         </table>
         
         </div>
