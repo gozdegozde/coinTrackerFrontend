@@ -23,11 +23,15 @@ This is a platform for tracking your coins and see the details of everything abo
 ## User Story
 
 - As a user I want to see all currencies.
+<img src ="https://res.cloudinary.com/dyak9tgct/image/upload/v1618524630/Screenshot_from_2021-04-16_00-09-48_srclpu.png" /><br/>
 - As a user I want to be able to create an account.
+ <img src = "https://res.cloudinary.com/dyak9tgct/image/upload/v1618525101/Screenshot_from_2021-04-16_00-17-48_nu2ecf.png"/><br/>
 - As a user I want to track all coins that I want.
-- As a user I want to add an amount of coin that I bought.
 - As a user I want to see total amount that I have.
 - As a user I want to be able to delete the coin that I don't want to track anymore.
+<img src ="https://res.cloudinary.com/dyak9tgct/image/upload/v1618524808/Screenshot_from_2021-04-16_00-12-55_ntxf3z.png" /><br/>
+- As a user I want to add an amount of coin that I bought.
+<img src ="https://res.cloudinary.com/dyak9tgct/image/upload/v1618524751/Screenshot_from_2021-04-16_00-11-55_swvqpi.png"/><br/>
 
 ## I used in this project
 
