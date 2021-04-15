@@ -1,42 +1,57 @@
-# Frontend template
+# COIN TRACKER
 
-This is a simple react/redux/jwt template to start a project quickly
+This is a platform for tracking your coins and see the details of everything about all cryptocurrencies.
 
-## Table of contents:
+## This platform helps you:
 
-- **[Setup](#setup-how-to-use-this-template)**
-- **[Create React App docs](#cra-docs)**
+- **See all coins **
+- **Add the coins in your portfolio that you want to track**
+- **Add the coins in your portfolio that you bought**
+- **See the total dollar equivalent of the coins you have bought**
 
-## SETUP How to use this template
 
-1. Create a new project based on this template using the `Use this template` button
+## Goals for this project
 
-![HOW_TO_USE](https://user-images.githubusercontent.com/20372832/77003323-70966180-695d-11ea-8abe-b362d57135f3.gif)
+1. To build a fullstack app, practicing all technologies that I learnt.
+2. Explore new things on my own
+3. Using some applications for documents 
+  - https://mockflow.com/app/#Wireframe
+  - https://dbdiagram.io/
+4. Get used to use github and git flow
 
-2. Clone the app
 
-```
-git clone git@github.com:YOUR_GITHUB_NAME/YOUR_PROJECT_NAME.git
-```
+## User Story
 
-3. cd into your project
+- As a user I want to see all currencies.
+- As a user I want to be able to create an account.
+- As a user I want to track all coins that I want.
+- As a user I want to add an amount of coin that I bought.
+- As a user I want to see total amount that I have.
+- As a user I want to be able to delete the coin that I don't want to track anymore.
 
-```
-cd YOUR_PROJECT_NAME
-```
+## I used in this project
 
-4. install dependencies
+- ReactJs
+- Redux
+- Express
+- REST API
+- Sequelize as ORM
+- Many-to-many models 
+- Bootstrap
 
-```
-npm install
-```
+## Project Frontend Board
 
-5. Start development server with npm start
+Go to [Frontend](https://github.com/gozdegozde/coinTrackerFrontend)
 
-```
-npm start
-```
+## Project Backend Board
 
-## CRA docs
+Go to [Backend](https://github.com/gozdegozde/coinTrackerBackend/)
 
-The normal Create React App docs can be found in [CRA_DOCS.md](./CRA_DOCS.md)
+## Database Model
+
+Go to [Dbdiagram](https://dbdiagram.io/d/606b1466ecb54e10c33ebb34)
+
+## Wireframe
+
+Go to  [Wireframe](https://wireframepro.mockflow.com/view/M0068e0c20b41393d50806de1cc1952121617354841557#/page/c66616cae69d4525bc318daa632fd2a2)
+
