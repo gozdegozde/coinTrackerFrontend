@@ -14,6 +14,7 @@ import MyPortfolio from "./pages/MyPortfolio"
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import Welcome from "./components/Welcome";
 
 
 
@@ -32,7 +33,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/home" component={Home} />
         <Route path="/portfolio" component={MyPortfolio} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
