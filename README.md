@@ -4,7 +4,7 @@ This is a platform for tracking your coins and see the details of everything abo
 
 ## This platform helps you:
 
-- **See all coins **
+- **See all coins**
 - **Add the coins in your portfolio that you want to track**
 - **Add the coins in your portfolio that you bought**
 - **See the total dollar equivalent of the coins you have bought**
