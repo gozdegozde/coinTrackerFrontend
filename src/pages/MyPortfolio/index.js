@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { selectUser } from "../../store/addCoin/selectors";
 import {fetchUserCoins, deleteCoin} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"

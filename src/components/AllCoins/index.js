@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../components/Pagination"
-//import moment from "moment";
-import { selectUser } from "../../store/user/selectors"
 import { fetchNextPages } from '../../store/coin/actions'
 import {  selectFeedCoins } from '../../store/coin/selectors'
 
@@ -17,7 +15,6 @@ export default function CoinsFeed() {
      const [currentPage, setCurrentPage] = useState(1)
      const [postPerPage] = useState(30)
 
-     const user = useSelector(selectUser);
 
   useEffect(() => {
     
@@ -58,8 +55,9 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="35" height="35"/></th>
                 <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
                 <td >{coin.currency}</td>
-                <td>{coin.price}</td>
-                <td>{coin.market_cap}</td>
+                <td>{parseFloat(coin.price).numberFormat(2)}</td>
+                <td>{(coin.market_cap)}</td>
+              
                 <td>{coin["1d"].price_change_pct < 0 ? (
                   
                       <p className="text-danger">

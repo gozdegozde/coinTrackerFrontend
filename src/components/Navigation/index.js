@@ -15,9 +15,11 @@ export default function Navigation() {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Navbar.Brand path="/" as={NavLink} to="/">
+     {token ? <Navbar.Brand path="/home" as={NavLink} to="/home">
         TRACK YOUR COINS
-      </Navbar.Brand>
+      </Navbar.Brand>: <Navbar.Brand path="/" as={NavLink} to="/">
+        TRACK YOUR COINS
+      </Navbar.Brand>}
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
