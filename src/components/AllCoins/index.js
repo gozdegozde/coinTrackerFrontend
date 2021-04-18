@@ -57,8 +57,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 <td >{coin.currency}</td>
                 <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                 <td>{(coin.market_cap).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-              
-                <td>{coin["1d"].price_change_pct < 0 ? (
+              {/* {console.log("price change pct", coin["1d"].price_)} */}
+                <td>{(coin["1d"]) === undefined ?  (<p></p>): (coin["1d"].price_change_pct < 0 ? (
                   
                       <p className="text-danger">
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
@@ -77,7 +77,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                       {coin["1d"].price_change_pct}
                   </p>
                  
-                )}</td>
+                ))}</td>
                 
                 <td><Link to= {`${coin.id}`}><Button>See Details</Button></Link></td>
                

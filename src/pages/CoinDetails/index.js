@@ -71,32 +71,32 @@ export default function CoinDetails() {
               </tr>
               <tr>
                 <td>Price</td>
-                <td>${coin.price}</td>
+                <td>${parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
               </tr>
               <tr>
                 <td>Price Change</td>
-                <td>{coin["1d"].price_change < 0 ? (
+                <td>{coin["1d"] !== undefined ? (coin["1d"].price_change < 0 ? (
                   <p className="text-danger">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                   </svg>
-                    ${coin["1d"].price_change }</p>
+                    ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
                 ):(
                    <p className="text-success">
                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                       </svg>
-                     ${coin["1d"].price_change }</p>
-                )}</td>
+                     ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
+                )): (null)}</td>
               </tr>
                <tr>
                 <td>Market Cap</td>
-                <td>${coin.market_cap}</td>
+                <td>${parseFloat(coin.market_cap).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
               </tr>
                <tr>
                 <td>Market Cap Change</td>
                 <td>
-                  {coin['1d'].market_cap_change_pct < 0 ? (
+                  {coin["1d"] !== undefined ? (coin['1d'].market_cap_change_pct < 0 ? (
                      <p className="text-danger">
                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
@@ -106,15 +106,18 @@ export default function CoinDetails() {
                           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                           </svg>
-                    {coin['1d'].market_cap_change_pct}%</p>)}</td>
+                    {coin['1d'].market_cap_change_pct}%</p>)): (null)}</td>
               </tr>
               <tr>
                 <td>Circulating Supply</td>
-                <td>{coin.circulating_supply} {coin.symbol}</td>
+                <td>{(coin.circulating_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>
               </tr>
                <tr>
                 <td>Max Supply</td>
-                <td>{coin.max_supply} {coin.symbol}</td>
+                {console.log("Max supply",coin.max_supply)}
+                {/* <td>{(coin.max_supply ? (<td></td>):(<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>))} </td> */}
+              
+              <td>{coin.max_supply !== undefined ? (<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>) : (<td>{coin.symbol}</td>) }</td>
               </tr>
                <tr>
                 <td>Market Rank</td>

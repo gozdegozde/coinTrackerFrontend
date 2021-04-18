@@ -65,9 +65,13 @@ return(
           <td></td>
           <td></td>
           <td>${Array.isArray(coins) ? 
-            (coins.map(c=>parseInt(c.price * c.userCoins.amount)).reduce((sum,val)=> sum+val,0 )) : (null) }</td>
+            (coins.map((c)=> {
+              return(
+                parseFloat(c.price * c.userCoins.amount)
+              )
+            }).reduce((sum,val)=> sum+val,0 )).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : (null) }</td>
           
-         
+    
         </table>
         
         </div>
