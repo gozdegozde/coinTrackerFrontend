@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = `https://cors-anywhere.herokuapp.com/https://api.nomics.com/v1/currencies/ticker?key=39229126e722ab40066b13018df86143&convert=USD`;
+const API_URL = `https://api.nomics.com/v1/currencies/ticker?key=39229126e722ab40066b13018df86143&convert=USD`;
 
 export function startLoading() {
   return {
