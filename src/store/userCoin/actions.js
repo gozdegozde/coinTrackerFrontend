@@ -1,6 +1,6 @@
 import axios from "axios";
 import { showMessageWithTimeout } from "../appState/actions"
-const apiUrl = process.env.API_URL || "https://track-your-coins.herokuapp.com";
+const apiUrl = process.env.API_URL || "https://cors-anywhere.herokuapp.com/https://track-your-coins.herokuapp.com";
 
 export const postCoin = (name,amount, price, ticker, logo_url) => async (
   dispatch,
