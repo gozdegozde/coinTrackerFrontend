@@ -43,10 +43,10 @@ return(
               </tr>
             </thead>
         
-        {!Array.isArray(coins) ? (<div>Loading</div>) : (
+        {!Array.isArray(coins) ? (<tbody><tr><th>Loading</th></tr></tbody>) : (
             coins.map((coin)=> {
                 return(
-                   <tbody>
+                   <tbody key = {coin.id}>
                        <tr>
                            <th scope="row" > <img src={coin.logoUrl} alt={coin.id} width="45" height="45"/> </th>
                         <td >{coin.name}</td>
@@ -60,6 +60,8 @@ return(
                 )    
             })
         )}
+        <tbody>
+          <tr>
         <td>Total Amount </td>
           <td></td>
           <td></td>
@@ -70,7 +72,8 @@ return(
                 parseFloat(c.price * c.userCoins.amount)
               )
             }).reduce((sum,val)=> sum+val,0 )).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : (null) }</td>
-          
+           </tr>
+           </tbody>
     
         </table>
         

@@ -39,13 +39,13 @@ export default function CoinDetails() {
       console.log("coin ", coin)
       
       return (
-       <div  className='container mt-5'>
+       <div key={coin.id} className='container mt-5'>
 
           <div>
  
             <h1>{coin.symbol} Price Statistics</h1>
             
-            <div class="nomics-ticker-widget" data-name={coin.name} data-base={coin.id} data-quote="USD"></div>
+            <div className="nomics-ticker-widget" dataname={coin.name} database={coin.id} dataquote="USD"></div>
           <ScriptTag type="text/javascript" src="https://widget.nomics.com/embed.js" /> <br/>
 
                <table key="id" className="table table-hover">
@@ -77,14 +77,14 @@ export default function CoinDetails() {
                 <td>Price Change</td>
                 <td>{coin["1d"] !== undefined ? (coin["1d"].price_change < 0 ? (
                   <p className="text-danger">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+                    <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                   </svg>
                     ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
                 ):(
                    <p className="text-success">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
+                        <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                       </svg>
                      ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
                 )): (null)}</td>
@@ -98,13 +98,13 @@ export default function CoinDetails() {
                 <td>
                   {coin["1d"] !== undefined ? (coin['1d'].market_cap_change_pct < 0 ? (
                      <p className="text-danger">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                           </svg>
                    {coin['1d'].market_cap_change_pct}%</p>
                   ): ( <p className="text-success">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
+                                <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                           </svg>
                     {coin['1d'].market_cap_change_pct}%</p>)): (null)}</td>
               </tr>
@@ -117,7 +117,7 @@ export default function CoinDetails() {
                 {console.log("Max supply",coin.max_supply)}
                 {/* <td>{(coin.max_supply ? (<td></td>):(<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>))} </td> */}
               
-              <td>{coin.max_supply !== undefined ? (<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>) : (<td>{coin.symbol}</td>) }</td>
+              <td>{coin.max_supply !== undefined ? (<p>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</p>) : (<td>{coin.symbol}</td>) }</td>
               </tr>
                <tr>
                 <td>Market Rank</td>
