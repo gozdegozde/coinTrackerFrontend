@@ -39,7 +39,13 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/:ids" component={CoinDetails}/>
+       
       </Switch>
+      <footer>
+  
+  <p><a href="https://nomics.com">Crypto Market Cap & Pricing Data Provided By Nomics.</a></p>
+</footer>
+       
     </div>
   );
 }

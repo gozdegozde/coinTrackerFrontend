@@ -59,11 +59,11 @@ export default function CoinDetails() {
               </tr>
                <tr>
                 <td>Status</td>
-                 <td>{coin.status === "active" ? (
-                    <p className="text-success">{coin.status}</p>
+                 {coin.status === "active" ? (
+                    <td className="text-success">{coin.status}</td>
                 ):(
-                    <p className="text-danger">{coin.status}</p>
-                )}</td>
+                    <td className="text-danger">{coin.status}</td>
+                )}
               </tr>
                <tr>
                 <td>Currency</td>
@@ -75,19 +75,19 @@ export default function CoinDetails() {
               </tr>
               <tr>
                 <td>Price Change</td>
-                <td>{coin["1d"] !== undefined ? (coin["1d"].price_change < 0 ? (
-                  <p className="text-danger">
+                {coin["1d"] !== undefined ? (coin["1d"].price_change < 0 ? (
+                  <td className="text-danger">
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
                     <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                   </svg>
-                    ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
+                    ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</td>
                 ):(
-                   <p className="text-success">
+                   <td className="text-success">
                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                       </svg>
-                     ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</p>
-                )): (null)}</td>
+                     ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</td>
+                )): (null)}
               </tr>
                <tr>
                 <td>Market Cap</td>
@@ -95,18 +95,18 @@ export default function CoinDetails() {
               </tr>
                <tr>
                 <td>Market Cap Change</td>
-                <td>
+                
                   {coin["1d"] !== undefined ? (coin['1d'].market_cap_change_pct < 0 ? (
-                     <p className="text-danger">
+                     <td className="text-danger">
                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
                             <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
                           </svg>
-                   {coin['1d'].market_cap_change_pct}%</p>
-                  ): ( <p className="text-success">
+                   {coin['1d'].market_cap_change_pct}%</td>
+                  ): ( <td className="text-success">
                           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                           </svg>
-                    {coin['1d'].market_cap_change_pct}%</p>)): (null)}</td>
+                    {coin['1d'].market_cap_change_pct}%</td>)): (null)}
               </tr>
               <tr>
                 <td>Circulating Supply</td>
@@ -115,7 +115,6 @@ export default function CoinDetails() {
                <tr>
                 <td>Max Supply</td>
                 {console.log("Max supply",coin.max_supply)}
-                {/* <td>{(coin.max_supply ? (<td></td>):(<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>))} </td> */}
               
               <td>{coin.max_supply !== undefined ? (<p>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</p>) : (<td>{coin.symbol}</td>) }</td>
               </tr>

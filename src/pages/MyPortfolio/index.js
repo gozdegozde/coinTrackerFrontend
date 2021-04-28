@@ -9,11 +9,11 @@ import Button from 'react-bootstrap/Button';
 
 
 
-
 export default function CoinDetails() {
     const dispatch = useDispatch()
     const users = useSelector(selectUser)
     const coins = useSelector(selectCoins)
+
 
 
      useEffect(() => {
@@ -24,6 +24,10 @@ export default function CoinDetails() {
    
     dispatch(deleteCoin(coinId));
   };
+
+
+    
+ 
 
 return(
         <div className='container mt-5'> 
@@ -39,6 +43,7 @@ return(
                   <th scope="col">Amount</th>
                   <th scope="col">$ Amount</th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 
               </tr>
             </thead>
@@ -51,9 +56,11 @@ return(
                            <th scope="row" > <img src={coin.logoUrl} alt={coin.id} width="45" height="45"/> </th>
                         <td >{coin.name}</td>
                         <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                        <td>{coin.userCoins.amount}</td>
+                        <td >{coin.userCoins.amount}</td>
                         <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+                        <td> <Button> Update</Button> </td>
                         <td> <Button  onClick= {() => onDelete(coin.id)}>Delete Coin</Button> </td>
+                       
                         </tr>
                    </tbody>
                   
@@ -72,6 +79,8 @@ return(
                 parseFloat(c.price * c.userCoins.amount)
               )
             }).reduce((sum,val)=> sum+val,0 )).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') : (null) }</td>
+            <td></td>
+        
            </tr>
            </tbody>
     
