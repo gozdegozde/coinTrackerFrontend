@@ -5,6 +5,7 @@ import moment from "moment"
 import ScriptTag from 'react-script-tag';
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import Loading from "../../components/Loading"
 
 import { fetchCoin } from "../../store/coinDetail/actions";
 import { selectCoins } from "../../store/coinDetail/selectors";
@@ -31,7 +32,7 @@ export default function CoinDetails() {
   ;
   
     return !Array.isArray(coinData) ? (
-    <p>loading ...</p>
+    <Loading/>
   ) : (
     coinData.map((coin) => {
       
