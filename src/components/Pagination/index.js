@@ -1,6 +1,7 @@
 import React from 'react'
 
 
+
  const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     const pageNumbers =[];
 
@@ -18,6 +19,7 @@ import React from 'react'
 
                     </li>
                 ))}
+             
             </ul>
         </nav>
     )

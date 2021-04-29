@@ -120,7 +120,7 @@ export default function CoinDetails() {
                 <td>Max Supply</td>
                 
               
-              {coin.max_supply === undefined ? (null) : (<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>) }
+              {coin.max_supply === undefined ? (<td></td>) : (<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>) }
               </tr>
                <tr>
                 <td>Market Rank</td>

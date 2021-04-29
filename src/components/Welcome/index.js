@@ -7,11 +7,11 @@ export default function Welcome() {
         <div>
          <Container className= "mt-5"  as={Col} >
             <div style={{ 
-      backgroundImage: `url("https://cointracking.info/assets/img/landing/Devices.png")`,
-       height:'830px',
-       width:'950px'
+                    backgroundImage: `url("https://cointracking.info/assets/img/landing/Devices.png")`,
+                    height:'830px',
+                    width:'950px'
       
-    }}>
+            }}>
         <Form as={Col} md={{ span: 6, offset: 8 }}>
             <br/> <br/> <br/><br/> <br/> <br/>
             <h1> Welcome to CoinTracker</h1> 

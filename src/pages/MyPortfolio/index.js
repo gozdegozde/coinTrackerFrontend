@@ -5,7 +5,7 @@ import {fetchUserCoins, deleteCoin} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"
 import { useDispatch, useSelector } from "react-redux";
 import Button from 'react-bootstrap/Button';
-
+import Loading from "../../components/Loading"
 
 
 
@@ -45,7 +45,7 @@ return(
               </tr>
             </thead>
         
-        {!Array.isArray(coins) ? (<tbody><tr><th>Loading</th></tr></tbody>) : (
+        {!Array.isArray(coins) ? (<Loading/>) : (
             coins.map((coin)=> {
                 return(
                    <tbody key = {coin.id}>

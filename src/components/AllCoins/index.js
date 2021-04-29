@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Pagination from "../../components/Pagination"
 import { fetchNextPages } from '../../store/coin/actions'
 import {  selectFeedCoins } from '../../store/coin/selectors'
+//import Loading from "../Loading"
+import Loading from "../../components/Loading"
 
 
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
@@ -47,7 +49,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
               </thead>
             
            
-      {currentPosts.map(coin => {
+      {!Array.isArray(currentPosts) ? (<Loading/>): (currentPosts.map(coin => {
         return (
           
           <tbody key = {coin.id}>
@@ -56,18 +58,18 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
                 <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
                 <td >{coin.currency}</td>
                 <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                <td>{(coin.market_cap === undefined ) ? (null)
+                <td>{(coin.market_cap === undefined ) ? (<td></td>)
                 :
                   (coin.market_cap).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
                 }</td>
            
-                {(coin["1d"]) === undefined ?  (<p></p>): (coin["1d"].price_change_pct < 0 ? (
+                {(coin["1d"]) === undefined ?  (<td></td>): (coin["1d"].price_change_pct < 0 ? (
                   
                       <td >
                         <div className="text-danger">
                         <svg  xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
-  <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
-</svg>
+                            <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                          </svg>
 
                         {coin["1d"].price_change_pct} 
                       </div>
@@ -92,9 +94,10 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
       </tbody>
        
         );
-      })}
+      }))}
       </table>
-     <Pagination postsPerPage={postPerPage} totalPosts={coins.length} paginate={paginate}/>
+    
+     <Pagination postsPerPage={postPerPage} totalPosts={960} paginate={paginate}/>
       </div>
       </div>
       
