@@ -58,3 +58,7 @@ Go to [Dbdiagram](https://dbdiagram.io/d/606b1466ecb54e10c33ebb34)
 ## Wireframe
 
 Go to [Wireframe](https://wireframepro.mockflow.com/view/M0068e0c20b41393d50806de1cc1952121617354841557#/page/c66616cae69d4525bc318daa632fd2a2)
+
+## Here is the live version
+
+[CoinTracker](https://coinntracker.netlify.app/)
