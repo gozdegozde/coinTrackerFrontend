@@ -26,9 +26,6 @@ export default function CoinDetails() {
   };
 
 
-    
- 
-
 return(
         <div className='container mt-5'> 
             <div>
@@ -56,9 +53,10 @@ return(
                            <th scope="row" > <img src={coin.logoUrl} alt={coin.id} width="45" height="45"/> </th>
                         <td >{coin.name}</td>
                         <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                        <td >{coin.userCoins.amount}</td>
+                        <td>{coin.userCoins.amount}</td>
+                        {/* <td >{perCoin.find(p => p.id === coin.id).edit ? <input></input> : coin.userCoins.amount}</td> */}
                         <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                        <td> <Button> Update</Button> </td>
+                        
                         <td> <Button  onClick= {() => onDelete(coin.id)}>Delete Coin</Button> </td>
                        
                         </tr>

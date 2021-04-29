@@ -42,9 +42,10 @@ function App() {
        
       </Switch>
       <footer>
-  
-  <p><a href="https://nomics.com">Crypto Market Cap & Pricing Data Provided By Nomics.</a></p>
-</footer>
+        <div className="footer-copyright text-center py-3"> 
+          <a href="https://nomics.com">Crypto Market Cap & Pricing Data Provided By Nomics.</a>
+        </div>
+      </footer>
        
     </div>
   );

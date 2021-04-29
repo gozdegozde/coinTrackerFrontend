@@ -18,11 +18,11 @@ export function coinFullyFetched(coinData) {
 export function fetchCoin(ids) {
   return async function thunk(dispatch, getState) {
     dispatch(startLoadingCoin());
-console.log("id",ids)
+
     const coinResponse = await axios.get(`${API_URL}&ids=${ids}`);
-console.log("coinResponse",coinResponse)
+
     const coinData = coinResponse.data
-    console.log("Coin data", coinData)
+   
     dispatch(coinFullyFetched(coinData))
   }
 }

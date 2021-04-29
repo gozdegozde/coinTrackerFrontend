@@ -22,9 +22,7 @@ export default function CoinDetails() {
 
     const [amount, setAmount] = useState()
     const amountNumber = parseFloat(amount)
-    console.log("amountNumber",  typeof amountNumber)
-
-    console.log("amount", amount)
+  
     useEffect (() => {
         dispatch(fetchCoin(ids))
     }, [dispatch, ids])
@@ -36,7 +34,6 @@ export default function CoinDetails() {
     <p>loading ...</p>
   ) : (
     coinData.map((coin) => {
-      console.log("coin ", coin)
       
       return (
        <div key={coin.id} className='container mt-5'>
@@ -87,11 +84,15 @@ export default function CoinDetails() {
                         <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                       </svg>
                      ${parseFloat(coin["1d"].price_change).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,') }</td>
-                )): (null)}
+                )): (<td>0</td>)}
               </tr>
                <tr>
                 <td>Market Cap</td>
-                <td>${parseFloat(coin.market_cap).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
+
+               {coin.market_cap === undefined ?
+                (<td>0</td>) 
+                :
+                (<td>${parseFloat(coin.market_cap).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>)} 
               </tr>
                <tr>
                 <td>Market Cap Change</td>
@@ -106,17 +107,20 @@ export default function CoinDetails() {
                           <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
                                 <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                           </svg>
-                    {coin['1d'].market_cap_change_pct}%</td>)): (null)}
+                    {coin['1d'].market_cap_change_pct}%</td>)): (<td>0</td>)}
               </tr>
               <tr>
                 <td>Circulating Supply</td>
-                <td>{(coin.circulating_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>
+                {coin.circulating_supply === undefined ? (<td>0</td>) 
+                :
+                ( <td>{(coin.circulating_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>)}
+               
               </tr>
                <tr>
                 <td>Max Supply</td>
-                {console.log("Max supply",coin.max_supply)}
+                
               
-              <td>{coin.max_supply !== undefined ? (<p>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</p>) : (<td>{coin.symbol}</td>) }</td>
+              {coin.max_supply === undefined ? (null) : (<td>{(coin.max_supply).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')} {coin.symbol}</td>) }
               </tr>
                <tr>
                 <td>Market Rank</td>

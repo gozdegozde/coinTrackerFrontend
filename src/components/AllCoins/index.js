@@ -52,29 +52,36 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
           
           <tbody key = {coin.id}>
             <tr>
-                <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="35" height="35"/></th>
+                <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="30" height="30"/></th>
                 <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
                 <td >{coin.currency}</td>
                 <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                <td>{(coin.market_cap).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-              {/* {console.log("price change pct", coin["1d"].price_)} */}
+                <td>{(coin.market_cap === undefined ) ? (null)
+                :
+                  (coin.market_cap).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+                }</td>
+           
                 {(coin["1d"]) === undefined ?  (<p></p>): (coin["1d"].price_change_pct < 0 ? (
                   
-                      <td className="text-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
+                      <td >
+                        <div className="text-danger">
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-down" viewBox="0 0 16 16">
   <path fillRule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
 </svg>
+
                         {coin["1d"].price_change_pct} 
-                      
+                      </div>
                       </td>
                   
                   
                 ):(
-                   <td className="text-success">
+                   <td>
+                     <div className="text-success">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" className="bi bi-arrow-up" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
                   </svg>
                       {coin["1d"].price_change_pct}
+                      </div>
                   </td>
                  
                 ))}

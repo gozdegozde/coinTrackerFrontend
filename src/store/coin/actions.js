@@ -21,7 +21,6 @@ export async function fetchNextPages(dispatch, getState) {
  
     
     const res = await axios.get(`${API_URL}`);
-console.log("all coins",res)
     const moreCoins= res.data;
 
     dispatch(coinsFetched(moreCoins))
