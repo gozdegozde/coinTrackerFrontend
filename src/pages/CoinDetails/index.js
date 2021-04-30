@@ -43,7 +43,7 @@ export default function CoinDetails() {
  
             <h1>{coin.symbol} Price Statistics</h1>
             
-            <div className="nomics-ticker-widget" dataname={coin.name} database={coin.id} dataquote="USD"></div>
+            <div className="nomics-ticker-widget" data-name={coin.name} data-base={coin.currency} dataquote="USD"></div>
           <ScriptTag type="text/javascript" src="https://widget.nomics.com/embed.js" /> <br/>
 
                <table key="id" className="table table-hover">
