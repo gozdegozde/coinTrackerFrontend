@@ -38,8 +38,8 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
               <thead>
                <tr >
                   <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Currency</th>
+                  <th scope="col">Ticker</th>
+                  <th scope="col">Coin</th>
                   <th scope="col">Price</th>
                   <th scope="col">Market Cap</th>
                   <th scope="col">24h %</th>
@@ -56,7 +56,7 @@ const paginate = (pageNumber) => setCurrentPage(pageNumber)
             <tr>
                 <th scope="row" ><img src={coin.logo_url} alt={coin.id} width="30" height="30"/></th>
                 <td ><Link to= {`${coin.id}`}>{coin.currency}</Link></td>
-                <td >{coin.currency}</td>
+                <td >{coin.name}</td>
                 <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                 <td>{(coin.market_cap === undefined ) ? (<td></td>)
                 :

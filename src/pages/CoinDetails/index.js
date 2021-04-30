@@ -49,7 +49,7 @@ export default function CoinDetails() {
                <table key="id" className="table table-hover">
               <thead>
                <tr >
-                  <th colSpan="2" scope="col"><h1 className='text-primary mb-4'>{moment(coin.price_timestamp).format("DD-MM-YYYY")}</h1></th>
+                  <th colSpan="2" scope="col"><h1 className='text-primary mb-4'>{moment(coin.price_timestamp).format("DD/MM/YYYY")}</h1></th>
               </tr>
              <tr>
                 <td><img src={coin.logo_url} alt="some" width="55" height="55"/></td>

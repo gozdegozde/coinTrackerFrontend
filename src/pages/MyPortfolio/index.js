@@ -4,6 +4,7 @@ import { selectUser } from "../../store/addCoin/selectors";
 import {fetchUserCoins, deleteCoin} from "../../store/userCoin/actions"
 import { selectCoins } from "../../store/userCoin/selectors"
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment"
 import Button from 'react-bootstrap/Button';
 import Loading from "../../components/Loading"
 
@@ -34,8 +35,8 @@ return(
         <table key="id" className="table table-hover">
               <thead>
                <tr >
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Coin</th>
                   <th scope="col">Price</th>
                   <th scope="col">Amount</th>
                   <th scope="col">$ Amount</th>
@@ -50,13 +51,13 @@ return(
                 return(
                    <tbody key = {coin.id}>
                        <tr>
-                           <th scope="row" > <img src={coin.logoUrl} alt={coin.id} width="45" height="45"/> </th>
-                        <td >{coin.name}</td>
+                           <th scope="row" > <td>{moment(coin.createdAt).format("DD/MM/YYYY")}</td></th>
+                             
+                        <td > <img src={coin.logoUrl} alt={coin.id} width="35" height="35"/>&nbsp;&nbsp;{coin.name}</td>
                         <td>{parseFloat(coin.price).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
                         <td>{coin.userCoins.amount}</td>
                         {/* <td >{perCoin.find(p => p.id === coin.id).edit ? <input></input> : coin.userCoins.amount}</td> */}
                         <td>${parseFloat(coin.price * coin.userCoins.amount).toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}</td>
-                        
                         <td> <Button  onClick= {() => onDelete(coin.id)}>Delete Coin</Button> </td>
                        
                         </tr>
